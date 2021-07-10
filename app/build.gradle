@@ -32,15 +32,15 @@ android {
 }
 
 ext {
-    ktxVersion = "1.3.2"
+    ktxVersion = "1.6.0"
 
-    appcompatVersion = "1.2.0"
-    materialVersion = "1.2.1"
+    appcompatVersion = "1.3.0"
+    materialVersion = "1.4.0"
     constraintLayoutVersion = "2.0.4"
 
     junitVersion = "4.+"
-    extJunitVersion = "1.1.2"
-    espressoCoreVersion = "3.3.0"
+    extJunitVersion = "1.1.3"
+    espressoCoreVersion = "3.4.0"
 }
 
 dependencies {
