@@ -35,3 +35,14 @@ jobs:
       - name: Test JAVA_HOME
         run: |
           env | grep -i 'java'
+
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.1.2
+
+      - name: Setup platform tools
+        run: sdkmanager platform-tools
+
+      - name: Test Android env
+        run: |
+          echo "ANDROID_HOME = $ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT = $ANDROID_SDK_ROOT"
