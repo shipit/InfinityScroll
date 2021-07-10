@@ -34,12 +34,10 @@ jobs:
           java-version: '11'
           check-latest: false
 
-      - name: What is JAVA_HOME
+      - name: Where is JAVA_HOME
         run: |
           echo "java_home = $JAVA_HOME"
-          ls -ltR $JAVA_HOME
-          java -version
-          echo "java = `which java`"
+          echo "actual java_home = `readlink $JAVA_HOME`
 
       # - name: Android Build
       #   uses: vgaidarji/android-github-actions-build@v1.0.1
