@@ -42,8 +42,9 @@ jobs:
       - name: Test JAVA_HOME
         run: |
           echo "new java_home = $JAVA_HOME"
+          ls -ltR $JAVA_HOME
 
-      - name: Android Build
-        uses: vgaidarji/android-github-actions-build@v1.0.1
-        with:
-          args: "./gradlew assemble"
+      # - name: Android Build
+      #   uses: vgaidarji/android-github-actions-build@v1.0.1
+      #   with:
+      #     args: "./gradlew assemble"
