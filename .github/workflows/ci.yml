@@ -19,6 +19,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '8', '11' ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,25 +29,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
     
-      - name: Setup Java 11
-        id: setup-java-11
+      - name: Setup Java
+        id: setup-java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: ${{ matrix.java }}
           check-latest: false
-
-      # - name: Where is JAVA_HOME
-      #   run: |
-      #     echo "java_home = $JAVA_HOME"
-      #     echo "JAVA_HOME=`java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{print $3}'`" >> $GITHUB_ENV
 
       - name: Test JAVA_HOME
         run: |
-          echo "new java_home = $JAVA_HOME"
-          ls -ltR $JAVA_HOME
-
-      - name: Android Build
-        uses: vgaidarji/android-github-actions-build@v1.0.1
-        with:
-          args: "./gradlew assemble -Dorg.gradle.java.home=${{ env.JAVA_HOME }}"
+          env | grep -i 'java'
