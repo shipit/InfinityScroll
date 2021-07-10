@@ -37,7 +37,7 @@ jobs:
       - name: Where is JAVA_HOME
         run: |
           echo "java_home = $JAVA_HOME"
-          echo "actual java_home = `readlink $JAVA_HOME`
+          echo "actual java_home = `readlink $JAVA_HOME`"
 
       # - name: Android Build
       #   uses: vgaidarji/android-github-actions-build@v1.0.1
