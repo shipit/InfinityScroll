@@ -34,10 +34,10 @@ jobs:
           java-version: '11'
           check-latest: false
 
-      - name: Where is JAVA_HOME
-        run: |
-          echo "java_home = $JAVA_HOME"
-          echo "JAVA_HOME=`java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{print $3}'`" >> $GITHUB_ENV
+      # - name: Where is JAVA_HOME
+      #   run: |
+      #     echo "java_home = $JAVA_HOME"
+      #     echo "JAVA_HOME=`java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{print $3}'`" >> $GITHUB_ENV
 
       - name: Test JAVA_HOME
         run: |
@@ -47,4 +47,4 @@ jobs:
       - name: Android Build
         uses: vgaidarji/android-github-actions-build@v1.0.1
         with:
-          args: "./gradlew assemble -Dorg.gradle.java.home=$JAVA_HOME"
+          args: "./gradlew assemble -Dorg.gradle.java.home=${{ env.JAVA_HOME }}"
