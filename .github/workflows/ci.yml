@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Setup Java 11
+        id: setup-java-11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          check-latest: false
+
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.1.2
+
+      - name: Setup platform tools
+        run: sdkmanager platform-tools
+
+      - name: Assemble artifact
+        run: |
+          ./gradlew assembleDebug
+      
+      - name: Verify artifact
+        run: |
+          ls -l app/build/outputs/apk/debug
