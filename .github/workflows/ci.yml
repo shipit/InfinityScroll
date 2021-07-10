@@ -39,6 +39,7 @@ jobs:
           echo "java_home = $JAVA_HOME"
           ls -ltR $JAVA_HOME
           java -version
+          echo "java = `which java`"
 
       # - name: Android Build
       #   uses: vgaidarji/android-github-actions-build@v1.0.1
