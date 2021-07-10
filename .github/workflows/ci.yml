@@ -27,6 +27,7 @@ jobs:
         uses: actions/checkout@v2
     
       - name: Setup Java 11
+        id: setup-java-11
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
@@ -36,6 +37,7 @@ jobs:
       - name: What is JAVA_HOME
         run: |
           echo "java_home = $JAVA_HOME"
+          echo "jdk = ${{ steps.setup-java-11.outputs.jdk-path }}"
 
       - name: Android Build
         uses: vgaidarji/android-github-actions-build@v1.0.1
